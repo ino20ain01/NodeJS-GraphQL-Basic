@@ -1,0 +1,16 @@
+{
+    "presets": [
+        "env"
+    ],
+    "plugins": [
+        [
+            "@babel/plugin-transform-async-to-generator",
+            {
+                "module": "bluebird",
+                "method": "coroutine"
+            }
+        ],
+        "transform-class-properties",
+        "transform-object-rest-spread"
+    ]
+}
