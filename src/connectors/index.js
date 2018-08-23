@@ -13,11 +13,11 @@ db.once('open', function() {
     console.log('DB Connected');
 });
 
-import { schemaCategory } from './schemaPost';
+import { categorySchema } from './categorySchema';
 
-schemaCategory.plugin(autoIncrement.plugin, { model: 'Category', field: 'id', startAt: 1 });
+categorySchema.plugin(autoIncrement.plugin, { model: 'Category', field: 'id', startAt: 1 });
 
-var Category = mongoose.model('Category', schemaCategory);
+var Category = mongoose.model('Category', categorySchema);
 
 export {
     Category

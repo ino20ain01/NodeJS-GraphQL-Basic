@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-export var schemaCategory = new mongoose.Schema({
+export var categorySchema = new mongoose.Schema({
     title: String,
     description: String,
     create_date: { type: Date, default: Date.now },
