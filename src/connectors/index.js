@@ -13,8 +13,18 @@ db.once('open', function() {
 });
 
 import { categorySchema } from './categorySchema';
+import { postSchema } from './postSchema';
 
+// Category Schema
+categorySchema.virtual('posts', {
+    ref: 'Post',
+    localField: '_id',
+    foreignField: 'categories',
+    justOne: false,   
+});
 categorySchema.plugin(autoIncrement.plugin, { model: 'Category', field: 'id', startAt: 1 });
+// Post Schema
+postSchema.plugin(autoIncrement.plugin, { model: 'Post', field: 'id', startAt: 1 });
 
 var Category = mongoose.model('Category', categorySchema);
 
