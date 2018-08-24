@@ -1,8 +1,15 @@
+import { gql } from 'apollo-server-express';
+import { merge } from 'lodash';
+
 import { 
     typeDef as Category,
-    resolvers as categoryResolvers
+    resolver as categoryResolver
 } from '../schemas/categorySchema';
-import { gql } from 'apollo-server-express';
+
+import { 
+    typeDef as Post,
+    resolver as postResolver
+} from '../schemas/postSchema';
 
 const defaultSchema = gql`
     type Query {
@@ -14,5 +21,5 @@ const defaultSchema = gql`
     }
 `;
 
-export const typeDefs = [defaultSchema, Category];
-export const resolvers = Object.assign({}, categoryResolvers);
+export const typeDefs = [defaultSchema, Category, Post];
+export const resolvers = merge(categoryResolver, postResolver);

@@ -1,8 +1,9 @@
 import { categoryModel } from '../../models/categoryModel';
 
-export const resolvers = {
+export const resolver = {
     Query: {
-        getAllCategories: () => categoryModel.getAllCategories()
+        getAllCategories: () => categoryModel.getAllCategories(),
+        getCategoryAndPosts: (root, { id }) => categoryModel.getCategoryAndPosts(id)
     },
     Mutation: {
         createCategory(root, { input: CategoryInput}) {

@@ -1,27 +1,26 @@
 import { gql } from 'apollo-server-express';
 
 export const typeDef = gql`
-
     extend type Query {
-        getAllCategories: [Category]
-        getCategoryAndPosts(id: ID!): Category
+        getAllPosts: [Post]
     }
 
     extend type Mutation {
-        createCategory(input: CategoryInput): Category
+        createPost(input: PostInput): Post
     }
 
-    input CategoryInput {
+    input PostInput {
         title: String,
-        description: String
+        description: String,
+        category_ids: [ID]
     }
 
-    type Category {
-        _id: ID
+    type Post {
+        _id: ID,
         id: ID,
         title: String,
         description: String,
-        posts: [Post],
+        category_ids: [ID],
         create_date: String,
         update_date: String
     }

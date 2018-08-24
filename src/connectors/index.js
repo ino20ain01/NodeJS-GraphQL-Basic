@@ -19,7 +19,7 @@ import { postSchema } from './postSchema';
 categorySchema.virtual('posts', {
     ref: 'Post',
     localField: '_id',
-    foreignField: 'categories',
+    foreignField: 'category_ids',
     justOne: false,   
 });
 categorySchema.plugin(autoIncrement.plugin, { model: 'Category', field: 'id', startAt: 1 });
@@ -27,8 +27,10 @@ categorySchema.plugin(autoIncrement.plugin, { model: 'Category', field: 'id', st
 postSchema.plugin(autoIncrement.plugin, { model: 'Post', field: 'id', startAt: 1 });
 
 var Category = mongoose.model('Category', categorySchema);
+var Post = mongoose.model('Post', postSchema);
 
 export {
-    Category
+    Category,
+    Post
 }
 
